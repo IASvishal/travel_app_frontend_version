@@ -1,0 +1,49 @@
+.heading-main{
+    background-color: var(--background-color);
+    padding: 8px 3rem;
+    border-bottom: 1px solid var(--accent-color);
+    justify-content: space-between;
+    position: fixed;
+    z-index: 2;
+    width: 100%;
+}
+.heading-one{
+    font-size: 1.75rem;
+    color: var(--primary-color);
+    padding: 0;
+}
+
+.nav{
+    border: 1px solid var(--conatiner-border-color);
+    border-radius: 4px;
+}
+
+.nav:hover{
+    box-shadow: 2px 2px 5px 4px rgba(0, 0, 0, .1);
+
+}
+
+.form-conatiner{
+    background-color: #fff;
+    height: 2.75rem;
+    border-radius: 4px;
+}
+
+.form-option{
+    font-size: .875rem;
+    padding: 8px;
+    color: var(--text-primary-color);
+}
+
+.border-right-1px{
+    border-right: 1px solid black;
+    height: 70%;
+}   
+
+.search{
+    background-color: var(--primary-color);
+    color: var(--background-color);
+    height: 100%;
+    padding: 8px;
+    font-size: 1.875rem;
+}
