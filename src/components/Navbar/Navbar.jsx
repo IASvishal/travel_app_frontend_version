@@ -1,12 +1,17 @@
 import "./Navbar.css";
 export const Navbar = () => {
+
+    const handleSearchClick = () => {
+        
+    }
+
     return (
         <header className="heading-main d-flex  align-center">
 
             <h1 className="heading-one">
                 <a className="link" href="/">H Harbor</a>
             </h1>
-            <div className="form-container d-flex align-centre cursor-pointer shadow">
+            <div className="form-container d-flex align-centre cursor-pointer shadow" onClick={handleSearchClick}>
                 <span className="form-option">Any Where</span>
                 <span className="border-right-1px"></span>
                 <span className="form-option">Any Week</span>
