@@ -14,7 +14,7 @@
 }
 
 .nav{
-    border: 1px solid var(--conatiner-border-color);
+    border: 1px solid var(--container-border-color);
     border-radius: 4px;
 }
 

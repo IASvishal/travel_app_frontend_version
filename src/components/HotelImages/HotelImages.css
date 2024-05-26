@@ -1,0 +1,22 @@
+.hotel-image-box {
+  height: 25rem;
+
+}
+
+.primary-image-box {
+  height: 25rem;
+}
+
+.hotel-pic {
+  width: 19vw;
+  height: 49%;
+}
+
+.primary-hero-pic {
+  width: 41.5vw;
+  height: 100%;
+}
+
+.gap-sml {
+  gap: 8px;
+}
