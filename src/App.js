@@ -1,5 +1,6 @@
 import { Route, Routes } from 'react-router-dom';
 import { Home, SearchResults, SingleHotel } from './pages';
+// import {Filter} from "./components";
 import './App.css';
 
 function App() {
@@ -8,6 +9,7 @@ function App() {
       <Route path="/" element={<Home />} />
       <Route path="/hotels/:name/:address/:id/reserve" element={<SingleHotel />} />
       <Route path="/hotels/:address" element={<SearchResults/>}/>
+    
     </Routes>
   );
 }

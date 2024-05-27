@@ -6,11 +6,11 @@
 
 :root{
   --background-color: #fafafa;
-  --primary-color:#ff6525;
-  --text-color-primary:#363030;
-  --accent-color:#d2d2d2;
-  --container-border-color:#121010;
-  --overlay:rgba(0,0,0,0.3);
+  --primary-color: #ff6525;
+  --text-color-primary: #363030;
+  --accent-color: #d2d2d2;
+  --container-border-color: #707070;
+  --overlay: rgba(0, 0, 0, 0.3);
 }
 
 *{
