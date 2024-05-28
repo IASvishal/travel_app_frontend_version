@@ -52,7 +52,7 @@ export const Categories = () => {
         )}
         {
             Categories && Categories.map(({_id, category }) => 
-            <span className={`${category == hotelCategory ? "border-bottom": ""}`} key={_id} onClick={() => (handleCategoryClick(category))}>{category}</span>)
+            <span className={`${category === hotelCategory ? "border-bottom": ""}`} key={_id} onClick={() => (handleCategoryClick(category))}>{category}</span>)
         }
         {
             numberOfCategoryToShow -10 < Categories.length && (<button className="button btn-category btn-right fixed cursor-pointer"
