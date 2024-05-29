@@ -58,7 +58,6 @@ export const AuthLogin = () => {
         })
     }
 
-
     const handleTestCredentialsClicks = async() => {
         const { accessToken, username } = await loginHandler("7878787878", "abc@1234");
 
@@ -99,6 +98,7 @@ export const AuthLogin = () => {
                 </div>
             </form>
             <div className="cta">
+
                 <button className="button btn-outline-primary cursor-pointer" onClick={handleTestCredentialsClicks}>Login With Test Credentials</button>
             </div>
         </div>
