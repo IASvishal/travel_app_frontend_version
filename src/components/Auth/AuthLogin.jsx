@@ -57,9 +57,9 @@ export const AuthLogin = () => {
             type: "SHOW_AUTH_MODAL",
         })
     }
-
-
+ 
     const handleTestCredentialsClicks = async() => {
+
         const { accessToken, username } = await loginHandler("7878787878", "abc@1234");
 
         authDispatch({
