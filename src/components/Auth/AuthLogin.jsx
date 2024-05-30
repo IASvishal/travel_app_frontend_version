@@ -56,9 +56,6 @@ export const AuthLogin = () => {
         authDispatch({
             type: "SHOW_AUTH_MODAL",
         })
-    }
-
-
     return (
         <div className="auth-container">
             <form action="" onSubmit={handleFormSubmit}>
@@ -78,7 +75,7 @@ export const AuthLogin = () => {
                     <button className="button btn-primary btn-login cursor">Login</button>
                 </div>
             </form>
-        
+
         </div>
     )
 }
