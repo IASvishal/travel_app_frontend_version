@@ -58,7 +58,6 @@ export const AuthLogin = () => {
         })
     }
 
-
     return (
         <div className="auth-container">
             <form action="" onSubmit={handleFormSubmit}>
