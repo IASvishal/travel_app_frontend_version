@@ -78,7 +78,7 @@ export const AuthLogin = () => {
                     <button className="button btn-primary btn-login cursor">Login</button>
                 </div>
             </form>
-
+        
         </div>
     )
 }
