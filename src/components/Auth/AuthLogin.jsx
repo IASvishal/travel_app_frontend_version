@@ -56,6 +56,7 @@ export const AuthLogin = () => {
         authDispatch({
             type: "SHOW_AUTH_MODAL",
         })
+    } 
     return (
         <div className="auth-container">
             <form action="" onSubmit={handleFormSubmit}>
