@@ -46,17 +46,26 @@ export const AuthLogin = () => {
                 type: "SET_USER_NAME",
                 payload: username,
             });
+<<<<<<< HEAD
 
         }
+=======
+        };
+>>>>>>> 15dac05342062bccd58e906082c05e9fc1d38d3f
         authDispatch({
             type: "CLEAR_USER_DATA",
         });
         authDispatch({
             type: "SHOW_AUTH_MODAL",
+<<<<<<< HEAD
         });
     };
 
 
+=======
+        })
+    } 
+>>>>>>> 15dac05342062bccd58e906082c05e9fc1d38d3f
     return (
         <div className="auth-container">
             <form onSubmit={handleFormSubmit}>
@@ -91,7 +100,14 @@ export const AuthLogin = () => {
                     <button className="button btn-primary btn-login cursor">Login</button>
                 </div>
             </form>
+<<<<<<< HEAD
             
         </div>
     );
 };
+=======
+
+        </div>
+    )
+}
+>>>>>>> 15dac05342062bccd58e906082c05e9fc1d38d3f
