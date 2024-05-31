@@ -23,7 +23,7 @@ export const Payment = () => {
         (async () => {
             try {
                 const { data } = await axios.get(
-                    `http://localhost:3500/api/hotels/${id}`
+                    `https://travel-app-backend-version-1.onrender.com/api/hotels/${id}`
                 );
                 setSingleHotel(data);
             } catch (err) {

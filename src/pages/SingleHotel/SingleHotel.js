@@ -12,8 +12,8 @@ export const SingleHotel = () =>{
     useEffect(() =>{
         (async()=>{
             try{
-                const {data} = await axios.get(`http://localhost:3500/api/hotels/${id}`);
-                console.log(`http://localhost:3500/api/hotels/${id}`);
+                const {data} = await axios.get(`https://travel-app-backend-version-1.onrender.com/api/hotels/${id}`);
+                console.log(`https://travel-app-backend-version-1.onrender.com/api/hotels/${id}`);
                 setSingleHotel(data);
             }catch(err){
                 console.log(err);
