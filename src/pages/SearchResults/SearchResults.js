@@ -13,13 +13,13 @@ export const SearchResults = () =>{
         (async () => {
 
             try{
-                const {data} = await axios.get(`http://localhost:3500/api/hotels?category=${hotelCategory}`);
+                const {data} = await axios.get(`https://travel-app-backend-version-1.onrender.com/api/hotels?category=${hotelCategory}`);
                 setHotels(data );
             }catch(err){
                 console.log(err);
             }
         })();
-    },[destination]);
+    },[hotelCategory]);
 
     const filteredSearchResults = hotels.filter(({city, address, state}) => 
     address.toLowerCase() === destination.toLowerCase()||
