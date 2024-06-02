@@ -37,6 +37,7 @@ export const Payment = () => {
     const totalPayableAmount = price * numberOfNights + 200;
 
 
+
     
     return (
         <Fragment>
@@ -77,6 +78,7 @@ export const Payment = () => {
                     </div>
                     <button
                         className="button btn-primary btn-reserve cursor btn-pay"
+                    
                     >
                         Confirm Booking
                     </button>
