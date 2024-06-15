@@ -8,7 +8,7 @@ export const HotelCard = ({hotel}) => {
 
     const {wishlistDispatch, wishlist} = useWishlist();
 
-    const {accessToken, authDispatch} = useAuth();
+    const {accessToken} = useAuth();
     console.log({accessToken});
     const isHotelInWishlist = findHotelInWishlist(wishlist, _id);
 
@@ -21,25 +21,17 @@ export const HotelCard = ({hotel}) => {
     };
 
     const handleWishlistClick = () => {
-        if(accessToken){
-
-            if(!isHotelInWishlist){
-                wishlistDispatch({
-                    type: "ADD_TO_WISHLIST", 
-                    payload: hotel,
-                });
-                navigate("/wishlist")
-            }else{
-                wishlistDispatch({
-                    type: "REMOVE_FROM_WISHLIST", 
-                    payload: hotel,
-                });
-            }
+        if(!isHotelInWishlist){
+            wishlistDispatch({
+                type: "ADD_TO_WISHLIST", 
+                payload: hotel,
+            });
+            navigate("/wishlist")
         }else{
-            authDispatch({
-                type: "SHOW_AUTH_MODAL",
-                payload: "login"
-            })
+            wishlistDispatch({
+                type: "REMOVE_FROM_WISHLIST", 
+                payload: hotel,
+            });
         }
     }
 
