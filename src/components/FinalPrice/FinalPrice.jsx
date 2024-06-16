@@ -3,6 +3,8 @@ import {useDate} from "../../context";
 import {DateSelector} from "../DateSelector/DateSelector";
 import { useNavigate } from "react-router-dom";
 
+
+
 export const FinalPrice = ({singleHotel}) =>{
 
     const{_id, price, rating} = singleHotel;
@@ -10,6 +12,13 @@ export const FinalPrice = ({singleHotel}) =>{
     const navigate = useNavigate(); 
 
     const {guests, dateDispatch, checkInDate, checkOutDate} = useDate()
+
+    const numberOfNights =
+    checkInDate && checkOutDate
+        ? (checkOutDate.getTime() - checkInDate.getTime()) / (1000 * 3600 * 24)
+        : 0;
+    
+        const totalPayableAmount = price * numberOfNights + 200;
 
     const handleGuestChange = (event) =>{
         dateDispatch({type: "GUESTS", 
@@ -57,8 +66,8 @@ export const FinalPrice = ({singleHotel}) =>{
             </div>
             <div className="price-distribution d-flex direction-column">
                 <div className="final-price d-flex align-center justify-space-between">
-                    <span className="span">Rs. {price} x 2 nights</span>
-                    <span className="span">Rs. {price*2}</span>
+                    <span className="span">Rs. {price} x {numberOfNights}</span>
+                    <span className="span">Rs.{price * numberOfNights}</span>
                 </div>
                 <div className="final-price d-flex align-center justify-space-between">
                     <span className="span">Service Fee</span>
@@ -66,7 +75,7 @@ export const FinalPrice = ({singleHotel}) =>{
                 </div>
                 <div className="final-price d-flex align-center justify-space-between">
                     <span className="span">Tottal</span>
-                    <span className="span">Rs. {price *2 +200}</span>
+                    <span className="span">Rs. {totalPayableAmount}</span>
                 </div>
             </div>
         </div>

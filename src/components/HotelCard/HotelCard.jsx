@@ -2,14 +2,14 @@ import { useNavigate } from "react-router-dom";
 import "./HotelCard.css";
 import { useWishlist, useAuth } from "../../context";
 import { findHotelInWishlist } from "../../utils";
-export const HotelCard = ({hotel}) => {
+export const HotelCard = ({ hotel }) => {
 
-    const {_id, name, image, address, state, rating, price}= hotel;
+    const { _id, name, image, address, state, rating, price } = hotel;
 
-    const {wishlistDispatch, wishlist} = useWishlist();
+    const { wishlistDispatch, wishlist } = useWishlist();
 
-    const {accessToken} = useAuth();
-    console.log({accessToken});
+    const { accessToken, authDispatch } = useAuth();
+    console.log({ accessToken });
     const isHotelInWishlist = findHotelInWishlist(wishlist, _id);
 
 
@@ -21,31 +21,38 @@ export const HotelCard = ({hotel}) => {
     };
 
     const handleWishlistClick = () => {
-        if(!isHotelInWishlist){
-            wishlistDispatch({
-                type: "ADD_TO_WISHLIST", 
-                payload: hotel,
-            });
-            navigate("/wishlist")
-        }else{
-            wishlistDispatch({
-                type: "REMOVE_FROM_WISHLIST", 
-                payload: hotel,
+        if (accessToken) {
+            if (!isHotelInWishlist) {
+                wishlistDispatch({
+                    type: "ADD_TO_WISHLIST",
+                    payload: hotel,
+                });
+                navigate("/wishlist")
+            } else {
+                wishlistDispatch({
+                    type: "REMOVE_FROM_WISHLIST",
+                    payload: _id,
+                });
+
+            }
+        } else {
+            authDispatch({
+                type: "SHOW_AUTH_MODAL",
             });
         }
-    }
+    };
 
     return (
         <div className="relative hotelcard-container shadow cursor-pointer">
             <div onClick={handleHotelCardClick}>
-                <img src={image} alt={name}  className="img"/>
+                <img src={image} alt={name} className="img" />
                 <div className="hotelcard-details">
                     <div className="d-flex align-centre">
-                    <span className="location">{address}, {state}</span>
-                    <span className="rating d-flex align-centre">
-                        <span className="material-icons-outlined">star</span>
-                        <span>{rating}</span>
-                    </span>
+                        <span className="location">{address}, {state}</span>
+                        <span className="rating d-flex align-centre">
+                            <span className="material-icons-outlined">star</span>
+                            <span>{rating}</span>
+                        </span>
                     </div>
                     <p className="hotel-name">{name}</p>
                     <p className="price-details">
@@ -54,11 +61,11 @@ export const HotelCard = ({hotel}) => {
                     </p>
                 </div>
             </div>
-        
-                <button className="button btn-wishlist absolute d-flex align-centre" onClick={handleWishlistClick}>
-                    <span className={`material-icons favorite cursor ${isHotelInWishlist ? "fav-selected": ""}`}>favorite</span>
-                </button>
-            
+
+            <button className="button btn-wishlist absolute d-flex align-centre" onClick={handleWishlistClick}>
+                <span className={`material-icons favorite cursor ${isHotelInWishlist ? "fav-selected" : ""}`}>favorite</span>
+            </button>
+
         </div>
     )
 }

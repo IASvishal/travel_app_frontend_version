@@ -1,5 +1,5 @@
 import { Route, Routes } from 'react-router-dom';
-import { Home, SearchResults, SingleHotel, Wishlist, Payment } from './pages';
+import { Home, SearchResults, SingleHotel, Wishlist, Payment, OrderSummary } from './pages';
 // import {Filter} from "./components";
 import './App.css';
 
@@ -11,6 +11,7 @@ function App() {
       <Route path="/hotels/:address" element={<SearchResults/>}/>
       <Route path="/Wishlist" element={<Wishlist/>} />
       <Route path="/confirm-booking/stay/:id" element={<Payment/>}/>
+      <Route path="/order-summary" element={<OrderSummary />} />
     </Routes>
   );
 }
