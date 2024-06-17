@@ -2,13 +2,12 @@ import "./Auth.css";
 import { validateNumber, validatePassword } from "../../utils";
 import { useAuth } from "../../context";
 import { loginHandler } from "../../services";
+import Swal from "sweetalert2"; // Import SweetAlert
+
 let isNumberValid, isPasswordValid;
 
 export const AuthLogin = () => {
-
     const { authDispatch, number, password } = useAuth();
-
-
 
     const handleNumberChange = (event) => {
         isNumberValid = validateNumber(event.target.value);
@@ -40,23 +39,44 @@ export const AuthLogin = () => {
         e.preventDefault();
 
         if (isNumberValid && isPasswordValid) {
-            const { accessToken, username } = loginHandler(number, password);
-            authDispatch({
-                type: "SET_ACCESS_TOKEN",
-                payload: accessToken
+            loginHandler(number, password)
+                .then(({ accessToken, username }) => {
+                    authDispatch({
+                        type: "SET_ACCESS_TOKEN",
+                        payload: accessToken,
+                    });
+                    authDispatch({
+                        type: "SET_USERNAME",
+                        payload: username,
+                    });
+                    Swal.fire({
+                        icon: 'success',
+                        title: 'Success!',
+                        text: 'Login successful!',
+                    });
+                    authDispatch({
+                        type: "CLEAR_USER_DATA",
+                    });
+                    authDispatch({
+                        type: "SHOW_AUTH_MODAL",
+                    });
+                })
+                .catch((error) => {
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Error',
+                        text: 'Login failed. Please try again.',
+                    });
+                });
+        } else {
+            Swal.fire({
+                icon: 'error',
+                title: 'Invalid Input',
+                text: 'Please ensure all fields are valid.',
             });
-        authDispatch({
-                type: "SET_USERNAME",
-                payload: username
-            });
-        };
-        authDispatch({
-            type: "CLEAR_USER_DATA",
-        });
-        authDispatch({
-            type: "SHOW_AUTH_MODAL",
-        })
-    } 
+        }
+    };
+
     return (
         <div className="auth-container">
             <form action="" onSubmit={handleFormSubmit}>
@@ -76,7 +96,6 @@ export const AuthLogin = () => {
                     <button className="button btn-primary btn-login cursor">Login</button>
                 </div>
             </form>
-
         </div>
-    )
-}
+    );
+};

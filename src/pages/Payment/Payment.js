@@ -75,9 +75,9 @@ export const Payment = () => {
                 navigate("/order-summary");
             },
             prefill: {
-                name: "Prakash Sakari",
-                email: "sakari@gmail.com",
-                contact: "9876543210",
+                name: "Harshita Bhatt",
+                email: "harshita@gmail.com",
+                contact: "9971036547",
             },
         };
 

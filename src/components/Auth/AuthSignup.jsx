@@ -1,13 +1,13 @@
 import "./Auth.css";
-import { useAuth} from "../../context";
+import { useAuth } from "../../context";
 import {
     validateEmail,
     validateName,
     validateNumber,
     validatePassword,
 } from "../../utils";
-
 import { signupHandler } from "../../services";
+import Swal from "sweetalert2"; // Import SweetAlert
 
 let isNumberValid,
     isNameValid,
@@ -18,7 +18,6 @@ let isNumberValid,
 export const AuthSignup = () => {
     const { username, email, password, number, confirmPassword, authDispatch } =
         useAuth();
-
 
     const handleNumberChange = (event) => {
         isNumberValid = validateNumber(event.target.value);
@@ -87,6 +86,15 @@ export const AuthSignup = () => {
 
     const handleFormSubmit = (event) => {
         event.preventDefault();
+        if (password !== confirmPassword) {
+            Swal.fire({
+                icon: 'error',
+                title: 'Oops...',
+                text: 'Passwords do not match!',
+            });
+            return;
+        }
+
         if (
             isNumberValid &&
             isNameValid &&
@@ -94,11 +102,31 @@ export const AuthSignup = () => {
             isPasswordValid &&
             isConfirmPasswordValid
         ) {
-            signupHandler(username, number, email, password);
+            signupHandler(username, number, email, password)
+                .then(() => {
+                    Swal.fire({
+                        icon: 'success',
+                        title: 'Success!',
+                        text: 'Registration successful!',
+                    });
+                    authDispatch({
+                        type: "CLEAR_USER_DATA",
+                    });
+                })
+                .catch((error) => {
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Error',
+                        text: 'Registration failed. Please try again.',
+                    });
+                });
+        } else {
+            Swal.fire({
+                icon: 'error',
+                title: 'Invalid Input',
+                text: 'Please ensure all fields are valid.',
+            });
         }
-        authDispatch({
-            type: "CLEAR_USER_DATA",
-        });
     };
 
     return (

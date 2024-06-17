@@ -1,18 +1,23 @@
-export const wishlistReducer = (state,{type, payload}) =>{
+export const wishlistReducer = (state, { type, payload }) => {
 
-    switch(type){
+    switch (type) {
 
         case "ADD_TO_WISHLIST":
-            return{
+            return {
                 ...state,
                 wishlist: [...state.wishlist, payload],
             };
 
         case "REMOVE_FROM_WISHLIST":
-            return{
+            return {
                 ...state,
                 wishlist: state.wishlist.filter((hotel) => hotel._id !== payload._id),
             };
+        case "CLEAR_WISHLIST":
+            return {
+                ...state,
+                wishlist: []
+            }
 
         default:
             return state;
